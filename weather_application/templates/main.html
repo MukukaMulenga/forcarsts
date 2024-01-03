@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</head>
+<body style="background-image: url('https://www.wallpaperuse.com/wallp/25-252084_m.jpg');background-size: cover;">
+<div>
+    <div id="loader">Loading...</div>
+    <div id="app" style="display: none;"></div>
+    <div class="bg-primary text-light p-3">
+        <div class="mx-5">
+            <span><h4 style="display: inline-block;">Weather App</h4></span>
+            <span>   
+            </span> 
+        </div>
+    </div>
+    <div style="border-top: 10px transparent;border-radius: 10px;" class="class container p-5 shadow-lg  mx-auto  my-5">
+        <div class="row mb-5 ms-5">
+            <strong style="position:fixed;top:40px;left: 1300px;color: white;"><p>City name:{{info.name}}</p></strong>
+            <div class="col-3"></i></div>
+            <div class="col-md-6">
+                <form method="get" action="{% url 'get_wether' %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        {{form}}
+                        <span class="my-0.9" style="background-color: rgb(236, 113, 12);width: 50px;height:40px;justify-content: center;text-align: center;display: flex;" ><button style="border: none;background-color: transparent;" type="submit"><i class="fa fa-search mt-3 text-dark" aria-hidden="true"></i></button></span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row my-5 ms-1">
+            <div class="col-2 "></div>
+            <div class="col-md-2 p-3 shadow-lg  border-start border-4  border-success">
+                <h4>Status</h4>
+                {% for weather in info.weather %}
+                <img src="https://openweathermap.org/img/w/{{weather.icon}}.png" alt="Icon">
+                {% endfor %}
+            </div>
+            <div class="col-md-2 p-3 shadow-lg me-5 ">
+                {% for weather in info.weather %}
+                <h4>{{weather.description}}</h4>
+                {% endfor %}
+            </div>
+            <div class="col-md-2 shadow-lg border-start  border-4  border-success">
+                <h4 class="mt-1 p-3">Temperature</h4>
+                <img src="https://cdn-icons-png.flaticon.com/512/3534/3534501.png" width="50" height="50" alt="img">
+            </div>
+            <div class="col-md-2 shadow-lg">
+                <h4 class="mt-1 p-3">{{info.main.temp}} ºC</h4>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row my-5 ms-1">
+            <div class="col-2 "></div>
+            <div class="col-md-2 p-3 shadow-lg  border-start border-4  border-success">
+                <h4>Humidity</h4>
+                <img src="https://cdn-icons-png.flaticon.com/128/2828/2828582.png" width="30" height="30" alt="img">
+            </div>
+            <div class="col-md-2 p-3 shadow-lg me-5 ">
+                <h4>{{info.main.humidity}}</h4>
+            </div>
+            <div class="col-md-2 shadow-lg border-start  border-4  border-success">
+                <h4 class="mt-3">Pressure</h4>
+                <img class="ms-2 mb-5" src="https://th.bing.com/th/id/R.997644a681677b2116d4e9ee167f72a1?rik=cfiN1c7Kj%2b1SYg&pid=ImgRaw&r=0" width="40" height="40" alt="img">
+            </div>
+            <div class="col-md-2 shadow-lg">
+                <h4 class="mt-1 p-3">{{info.main.pressure}}</h4>
+            </div>
+            <div class="col-2"></div>
+        </div>
+      
+    </div>
+    
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var loader = document.querySelector('#lorder')
+        let app = document.querySelector()
+    }
+</script>
+</body>
+</html>
